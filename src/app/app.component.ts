@@ -1,33 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit{
-  //clickObservable: Observable<Event> = fromEvent(document,'focusin');
-  focused = null;
+export class AppComponent {
+  @ViewChild('divElement') divElement: ElementRef<HTMLElement> | undefined;
+  clickObservable$: Observable<string | null> = fromEvent(document,'focusin').pipe(
+    map(element => {
+      return this.divElement?.nativeElement.contains(element.target as HTMLElement)
+        ? this.getName(element.target as HTMLElement) : null;
+    }));
 
-  get name(): string {
-    // @ts-ignore
-    return this.focused ? this.focused.tagName : 'null';
-  }
-
-  ngOnInit(): void {
-    this.subscribeToObservable();
-  }
-
-  private subscribeToObservable() {
-    // this.clickObservable.subscribe(() => {
-    //   console.log(`The dom has been focused!`);
-    // });
-  }
-
-  onFocusWithin(focused: Element | null) {
-    // @ts-ignore
-    this.focused = focused;
+  getName(value: HTMLElement): string {
+    return value?.tagName;
   }
 
 }

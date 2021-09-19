@@ -1,6 +1,6 @@
-<div class="focus" (focusWithin)="onFocusWithin($event)">
+<div #divElement class="focus">
   <h2>
-    Currently focused: {{name}}
+    Currently focused: {{clickObservable$ | async}}
   </h2>
   <p>
     <select>
