@@ -8,15 +8,6 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @ViewChild('divElement') divElement: ElementRef<HTMLElement> | undefined;
-  clickObservable$: Observable<string | null> = fromEvent(document,'focusin').pipe(
-    map(element => {
-      return this.divElement?.nativeElement.contains(element.target as HTMLElement)
-        ? this.getName(element.target as HTMLElement) : null;
-    }));
 
-  getName(value: HTMLElement): string {
-    return value?.tagName;
-  }
 
 }
