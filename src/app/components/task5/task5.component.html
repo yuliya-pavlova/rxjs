@@ -1,8 +1,10 @@
-<blockquote>
-  Create a countdown and a button to restart it
-</blockquote>
-<p>
-  <button>Resend code</button>
-</p>
+<ng-container *ngIf="timer$ | async as value else resend">
+  Resend code in {{ value }} sec.
+</ng-container>
 
+<ng-template #resend>
+  <button  (click)="subject$.next()">Resend code</button>
+</ng-template>
+
+<br>
 <a routerLink="/">Назад</a>

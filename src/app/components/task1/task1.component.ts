@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./task1.component.css']
 })
 export class Task1Component {
-
   @ViewChild('divElement') divElement: ElementRef<HTMLElement> | undefined;
   clickObservable$: Observable<string | null> = fromEvent(document,'focusin').pipe(
     map(element => {
