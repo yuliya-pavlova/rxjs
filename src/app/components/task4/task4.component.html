@@ -1,0 +1,14 @@
+<button class="button" (click)="onButtonClick()">
+  Start loading
+</button>
+
+<p *ngIf="final; else loading">
+  {{ finalValue }}
+</p>
+
+<ng-template #loading>
+  <progress class="progress" [max]="100" [value]="values$ | async"></progress>
+  <div class="loading">Loading...</div>
+</ng-template>
+<br>
+<a routerLink="/">Назад</a>
