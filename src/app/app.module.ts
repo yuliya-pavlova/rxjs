@@ -9,12 +9,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { Task4Component } from './components/task4/task4.component';
 import { LoadingService } from './services/loading.service';
+import { WatchComponent } from './components/watch/watch.component';
 
 const appRoutes: Routes =[
   { path: '', component: HomePageComponent},
   { path: 'task1', component: Task1Component},
   { path: 'task4', component: Task4Component},
-  { path: 'task5', component: Task5Component }
+  { path: 'task5', component: Task5Component},
+  { path: 'watch', component: WatchComponent}
 ];
 
 @NgModule({
@@ -24,6 +26,7 @@ const appRoutes: Routes =[
     Task5Component,
     HomePageComponent,
     Task4Component,
+    WatchComponent,
   ],
   imports: [
     BrowserModule,
