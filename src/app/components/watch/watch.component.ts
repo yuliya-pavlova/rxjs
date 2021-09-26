@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, timer } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-watch',
@@ -9,7 +9,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class WatchComponent implements OnInit {
   time$: Observable<any> = timer(0,1000).pipe(
-    switchMap(_ => of(new Date()))
+    map(_ => new Date())
   );
 
   constructor() { }

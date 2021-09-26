@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from '../../services/loading.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task4',
@@ -13,13 +13,12 @@ export class Task4Component implements OnInit {
   finalValue = '';
 
   values$: Observable<string | number> = this.loadingService.load().pipe(
-    (map(value => {
-      if(typeof value === 'string') {
+    tap(value => {
+      if (typeof value === 'string') {
         this.final = true;
         this.finalValue = value;
       }
-      return value;
-    })),
+    }),
   )
 
   constructor(private loadingService: LoadingService) { }

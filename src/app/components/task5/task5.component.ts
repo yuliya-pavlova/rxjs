@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, timer } from 'rxjs';
+import { Observable, ReplaySubject, timer } from 'rxjs';
 import { map, switchMap, takeWhile } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,7 @@ import { map, switchMap, takeWhile } from 'rxjs/operators';
 })
 export class Task5Component implements OnInit, OnDestroy {
   timer = 5;
-  subject$ = new Subject();
+  subject$ = new ReplaySubject(1);
   timer$: Observable<number> = this.subject$.pipe(
     switchMap(_ => this.startTimer())
   );
@@ -21,7 +21,9 @@ export class Task5Component implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subject$.next();
+  }
 
   ngOnDestroy() {
     this.subject$.complete();

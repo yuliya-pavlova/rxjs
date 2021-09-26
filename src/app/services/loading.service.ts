@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { interval, Observable } from 'rxjs';
-import { endWith, map, take, tap } from 'rxjs/operators';
+import { endWith, map, take } from 'rxjs/operators';
 
 @Injectable()
 export class LoadingService {
