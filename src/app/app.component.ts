@@ -1,6 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +6,4 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-
-
 }
